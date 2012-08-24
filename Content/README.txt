@@ -1,0 +1,1 @@
+﻿This Folder isn't for game classes! Put only game assets here!
