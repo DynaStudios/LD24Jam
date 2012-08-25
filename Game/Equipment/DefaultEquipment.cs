@@ -6,10 +6,7 @@ namespace DynaStudios.LD24.Game.Equipment
     {
         public int Priority { get; set; }
 
-        // multiplicated values
         public int Strenght { get; set; }
-
-        // added values
         public int Defence { get; set; }
         public int MaxHealth { get; set; }
 
@@ -24,9 +21,9 @@ namespace DynaStudios.LD24.Game.Equipment
 
         public Stats getModfied(Stats stats)
         {
-            return new Stats
+            return new Stats(stats)
             {
-                Strenght = stats.Strenght * Strenght,
+                Strenght = stats.Strenght + Strenght,
                 Defence = stats.Defence + Defence,
                 MaxHealth = MaxHealth + stats.MaxHealth
             };

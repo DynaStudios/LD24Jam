@@ -12,17 +12,8 @@ using DynaStudios.LD24.Game.Equipment;
 
 namespace DynaStudios.LD24.Game.Entities
 {
-    public class Player : ActiveEntity
+    public class Player : Fighter
     {
-        public Model Model { get; set; }
-        public float ModelScaling { get; set; }
-
-        public Stats BaseStats { get; private set; }
-        public Stats Stats { get; private set; }
-        private List<IEquipment> equipment = new List<IEquipment>();
-        public ReadOnlyCollection<IEquipment> Equipment {
-            get { return new ReadOnlyCollection<IEquipment>(equipment); }
-        }
 
         private GameScreen screen;
 
@@ -38,27 +29,6 @@ namespace DynaStudios.LD24.Game.Entities
                 Exp = 0
             };
             UpdateEquipment();
-        }
-
-        public void AddEqipment(IEquipment item)
-        {
-            equipment.Add(item);
-            UpdateEquipment();
-        }
-
-        public void RemoveEqipment(IEquipment item)
-        {
-            equipment.Remove(item);
-            UpdateEquipment();
-        }
-
-        private void UpdateEquipment()
-        {
-            Stats = BaseStats;
-            foreach (IEquipment item in equipment)
-            {
-                Stats = item.getModfied(Stats);
-            }
         }
 
         public override void Update(GameTime gameTime)
@@ -135,25 +105,6 @@ namespace DynaStudios.LD24.Game.Entities
 
         public override void Draw(Camera camera, GameTime gameTime)
         {
-            Matrix[] modelTransforms = new Matrix[Model.Bones.Count];
-            Model.CopyAbsoluteBoneTransformsTo(modelTransforms);
-            Matrix playerModelScale = Matrix.CreateScale(ModelScaling);
-            Matrix playerPositionScale = Matrix.CreateScale(1.0f / ModelScaling);
-            Vector3 position3d = new Vector3(Position.Visual.X, 2.0f, Position.Visual.Y);
-            Matrix position3dMatrix = Matrix.CreateTranslation(position3d);
-
-            foreach (ModelMesh mesh in Model.Meshes)
-            {
-                foreach (BasicEffect effect in mesh.Effects)
-                {
-                    effect.EnableDefaultLighting();
-                    effect.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
-                    effect.World = (modelTransforms[mesh.ParentBone.Index] * playerModelScale) * position3dMatrix;
-                    effect.View = camera.ViewMatrix;
-                    effect.Projection = camera.ProjectionMatrix;
-                }
-                mesh.Draw();
-            }
         }
     }
 }
