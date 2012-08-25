@@ -37,7 +37,7 @@ namespace DynaStudios.LD24.Scenes
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
             base.Update(gameTime, otherScreenHasFocus, false);
-            Player.Update(gameTime.TotalGameTime);
+            Player.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)

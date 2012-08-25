@@ -27,8 +27,8 @@ namespace DynaStudios.LD24.Scenes.HUD
             Texture2D dnaProgressBackground = ScreenManager.Game.Content.Load<Texture2D>("Images/UI/HUD/DNABar");
 
             //Add HealthBar and ProgressBar
-            _healthBar = new Bar(healthBackground, _player.Health) { Size = new Vector2(100, 150), HudPosition = ScreenPosition.Left };
-            _dnaProgressBar = new Bar(dnaProgressBackground, _player.Exp) { Size = new Vector2(100, 150), HudPosition = ScreenPosition.Right };
+            _healthBar = new Bar(healthBackground, _player.BaseStats.Health) { Size = new Vector2(100, 150), HudPosition = ScreenPosition.Left };
+            _dnaProgressBar = new Bar(dnaProgressBackground, _player.BaseStats.Exp) { Size = new Vector2(100, 150), HudPosition = ScreenPosition.Right };
 
             _spellBar = new SpellBar();
 
@@ -42,9 +42,9 @@ namespace DynaStudios.LD24.Scenes.HUD
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
-            _healthBar.Value = _player.Health;
+            _healthBar.Value = _player.BaseStats.Health;
             //_healthBar.Value = 50;
-            _dnaProgressBar.Value = _player.Exp;
+            _dnaProgressBar.Value = _player.BaseStats.Exp;
 
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
         }
