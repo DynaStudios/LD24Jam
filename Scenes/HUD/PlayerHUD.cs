@@ -1,4 +1,5 @@
 ﻿using DynaStudios.LD24.Game.Entities;
+using DynaStudios.LD24.Game.Gui;
 using DynaStudios.LD24.Game.Gui.Components;
 using DynaStudios.LD24.Game.Gui.Screens;
 using DynaStudios.LD24.Game.Gui.Screens.Items;
@@ -12,6 +13,7 @@ namespace DynaStudios.LD24.Scenes.HUD
         private Player _player;
 
         private Bar _healthBar, _dnaProgressBar;
+        private SpellBar _spellBar;
 
         public PlayerHUD(Player player)
         {
@@ -28,6 +30,8 @@ namespace DynaStudios.LD24.Scenes.HUD
             _healthBar = new Bar(healthBackground, _player.Health) { Size = new Vector2(100, 150), HudPosition = ScreenPosition.Left };
             _dnaProgressBar = new Bar(dnaProgressBackground, _player.Exp) { Size = new Vector2(100, 150), HudPosition = ScreenPosition.Right };
 
+            _spellBar = new SpellBar();
+
             //Add Items to Panel
             PanelEntries.Add(_healthBar);
             //TODO: Add Spellbar here
@@ -39,6 +43,7 @@ namespace DynaStudios.LD24.Scenes.HUD
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
             _healthBar.Value = _player.Health;
+            //_healthBar.Value = 50;
             _dnaProgressBar.Value = _player.Exp;
 
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);

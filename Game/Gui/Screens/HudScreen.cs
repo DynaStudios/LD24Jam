@@ -75,8 +75,8 @@ namespace DynaStudios.LD24.Game.Gui.Screens
             var spriteBatch = ScreenManager.SpriteBatch;
             spriteBatch.Begin();
 
-            Rectangle testRec = new Rectangle((int) PresentationOffset.X, (int) PresentationOffset.Y, (int) Size.X, (int) Size.Y);
-            spriteBatch.Draw(ScreenManager.BlankTexture, testRec, Color.Black);
+            //Rectangle testRec = new Rectangle((int) PresentationOffset.X, (int) PresentationOffset.Y, (int) Size.X, (int) Size.Y);
+            //spriteBatch.Draw(ScreenManager.BlankTexture, testRec, Color.Black);
 
             foreach (var panelEntry in PanelEntries)
             {
@@ -90,19 +90,27 @@ namespace DynaStudios.LD24.Game.Gui.Screens
         {
             var position = PresentationOffset;
 
-            foreach (Bar panelEntry in PanelEntries)
+            foreach (IGuiItem entry in PanelEntries)
             {
-                switch (panelEntry.HudPosition)
+                if (entry.GetType() == typeof(Bar))
                 {
-                    case ScreenPosition.Left:
-                        panelEntry.Position = position;
-                        break;
-                    case ScreenPosition.Right:
-                        position.X = PresentationOffset.X + Size.X - panelEntry.GetWidth(this);
-                        position.Y = PresentationOffset.Y;
-                        panelEntry.Position = position;
-                        break;
-                }   
+                    var panelEntry = entry as Bar;
+                    switch (panelEntry.HudPosition)
+                    {
+                        case ScreenPosition.Left:
+                            panelEntry.Position = position;
+                            break;
+                        case ScreenPosition.Right:
+                            position.X = PresentationOffset.X + Size.X - panelEntry.GetWidth(this);
+                            position.Y = PresentationOffset.Y;
+                            panelEntry.Position = position;
+                            break;
+                    }   
+                }
+                if (entry.GetType() == typeof(SpellBar))
+                {
+                    //Draw Spellbar here
+                }
             }
 
         }
