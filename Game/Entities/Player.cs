@@ -11,12 +11,14 @@ namespace DynaStudios.LD24.Game.Entities
 {
     public class Player : ActiveEntity
     {
-        private Vector3 VisualPosition { get; set; }
         public Model Model { get; set; }
         public float ModelScaling { get; set; }
+
         public int Health { get; set; }
         public int MaxHealth { get; set; }
         public int Exp { get; set; }
+        public int Strenght { get; set; }
+        public int Defence { get; set; }
 
         private GameScreen screen;
 
@@ -94,17 +96,6 @@ namespace DynaStudios.LD24.Game.Entities
 				position.Z -= cos (Direction.Y) * distance * (keyFore || keyBack ? sqrt2 : 1.0f);
 				position.X += sin (Direction.Y) * distance * (keyFore || keyBack ? sqrt2 : 1.0f);
 			}
-			/*if (keyboardState.IsKeyDown (Keys.W)) {
-				position.Z += 1.0f;
-			}
-			if (keyboardState.IsKeyDown (Keys.S)) {
-				position.Z -= 1.0f;
-			}
-			if (keyboardState.IsKeyDown (Keys.A)) {
-				position.X -= 1.0f;
-			} else {
-				position.X += 1.0f;
-			}*/
             Position.Real = position;
         }
 
@@ -114,7 +105,7 @@ namespace DynaStudios.LD24.Game.Entities
             Model.CopyAbsoluteBoneTransformsTo(modelTransforms);
             Matrix playerModelScale = Matrix.CreateScale(ModelScaling);
             Matrix playerPositionScale = Matrix.CreateScale(1.0f / ModelScaling);
-            Vector3 position3d = new Vector3(VisualPosition.X, 2.0f, VisualPosition.Y);
+            Vector3 position3d = new Vector3(Position.Visual.X, 2.0f, Position.Visual.Y);
             Matrix position3dMatrix = Matrix.CreateTranslation(position3d);
 
             foreach (ModelMesh mesh in Model.Meshes)
