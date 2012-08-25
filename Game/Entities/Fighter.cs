@@ -16,14 +16,14 @@ namespace DynaStudios.LD24.Game.Entities
         public Stats Stats { get; protected set; }
         public ReadOnlyCollection<IEquipment> Equipment { get; private set; }
         
-        protected List<Weapen> weapens { get; set; }
-        protected ReadOnlyCollection<Weapen> Weapens { get; set; }
+        protected List<Weapon> weapons { get; set; }
+        protected ReadOnlyCollection<Weapon> Weapons { get; set; }
         protected List<IEquipment> equipment = new List<IEquipment>();
 
 
-        public void HitTarget(Weapen weapen, Fighter target)
+        public void HitTarget(Weapon weapon, Fighter target)
         {
-            target.TakeDemage(weapen.GetAttackForce(Stats));
+            target.TakeDemage(weapon.GetAttackForce(Stats));
         }
 
         public void TakeDemage(int deamage)
@@ -35,16 +35,16 @@ namespace DynaStudios.LD24.Game.Entities
             }
         }
 
-        public void AddWeapen(Weapen weapen)
+        public void AddWeapon(Weapon weapon)
         {
-            weapens.Add(weapen);
-            AddEqipment(weapen);
+            weapons.Add(weapon);
+            AddEqipment(weapon);
         }
 
-        public void RemoveWeapen(Weapen weapen)
+        public void RemoveWeapon(Weapon weapon)
         {
-            weapens.Remove(weapen);
-            RemoveEqipment(weapen);
+            weapons.Remove(weapon);
+            RemoveEqipment(weapon);
         }
 
         public void AddEqipment(IEquipment item)
@@ -67,7 +67,7 @@ namespace DynaStudios.LD24.Game.Entities
                 Stats = item.getModfied(Stats);
             }
             Equipment = new ReadOnlyCollection<IEquipment>(equipment);
-            Weapens = new ReadOnlyCollection<Weapen>(weapens);
+            Weapons = new ReadOnlyCollection<Weapon>(weapons);
         }
     }
 }

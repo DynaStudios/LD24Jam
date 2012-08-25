@@ -2,13 +2,13 @@
 
 namespace DynaStudios.LD24.Game.Equipment
 {
-    public class Weapen : IEquipment
+    public class Weapon : IEquipment
     {
         public int Priority { get; set; }
 
         public int Power { get; set; }
 
-        public Weapen()
+        public Weapon()
         {
             Priority = 2000;
             Power = 10;
