@@ -60,6 +60,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Game\Gui\Components\SpellButton.cs" />
+    <Compile Include="Game\Gui\Screens\HudScreen.cs" />
+    <Compile Include="Game\Gui\SpellBar.cs" />
     <Compile Include="LDGame.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -100,7 +103,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\README.txt" />
-    <Content Include="Game\CLASSES_HERE.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Libs\" />
