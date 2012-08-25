@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 using DynaStudios.UI.Input;
 
@@ -22,6 +23,7 @@ namespace DynaStudios.LD24.Scenes
         public override void Activate(bool instancePreserved)
         {
             base.Activate(instancePreserved);
+            Player.Model = this.ScreenManager.Game.Content.Load<Model>("Models/goblin_fbx");
         }
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
