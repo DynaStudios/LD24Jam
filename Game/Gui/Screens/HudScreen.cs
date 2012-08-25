@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using DynaStudios.LD24.Game.Gui.Components;
 using DynaStudios.LD24.Game.Gui.Screens.Items;
 using DynaStudios.UI.Components;
 using DynaStudios.UI.Input;
@@ -52,6 +53,16 @@ namespace DynaStudios.LD24.Game.Gui.Screens
                     var startBottomY = viewport.Height - Size.Y;
                     PresentationOffset = new Vector2(startBottomX, startBottomY);
                     break;
+
+                case ScreenPosition.TopRight:
+                    var startTopRightX = viewport.Width - Size.X;
+                    PresentationOffset = new Vector2(startTopRightX, 0);
+                    break;
+
+                case ScreenPosition.TopLeft:
+                    PresentationOffset = new Vector2(0, 0);
+                    break;
+
             }
 
             base.Activate(instancePreserved);
@@ -78,7 +89,21 @@ namespace DynaStudios.LD24.Game.Gui.Screens
         private void CalculateItemPositions()
         {
             var position = PresentationOffset;
-            
+
+            foreach (Bar panelEntry in PanelEntries)
+            {
+                switch (panelEntry.HudPosition)
+                {
+                    case ScreenPosition.Left:
+                        panelEntry.Position = position;
+                        break;
+                    case ScreenPosition.Right:
+                        position.X = PresentationOffset.X + Size.X - panelEntry.GetWidth(this);
+                        position.Y = PresentationOffset.Y;
+                        panelEntry.Position = position;
+                        break;
+                }   
+            }
 
         }
 

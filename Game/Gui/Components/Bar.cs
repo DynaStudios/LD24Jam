@@ -1,4 +1,5 @@
-﻿using DynaStudios.UI.Components;
+﻿using DynaStudios.LD24.Game.Gui.Screens.Items;
+using DynaStudios.UI.Components;
 using DynaStudios.UI.Input;
 using DynaStudios.UI.Screens;
 using Microsoft.Xna.Framework;
@@ -17,9 +18,12 @@ namespace DynaStudios.LD24.Game.Gui.Components
 
         public Texture2D Background { get; set; }
         public int Value { get; set; }
+        public ScreenPosition HudPosition { get; set; }
 
         public Bar(Texture2D background, int value)
         {
+            HudPosition = ScreenPosition.Left;
+
             Background = background;
             Value = value;
         }
@@ -48,8 +52,8 @@ namespace DynaStudios.LD24.Game.Gui.Components
             spriteBatch.Draw(Background, backgroundRec, Color.White);
 
             //Overlap not active part
-            Rectangle usedRec = new Rectangle((int) Position.X, (int) Position.Y, 0, 0);
-            spriteBatch.Draw(gameScreen.ScreenManager.BlankTexture, usedRec, Color.Black);
+            //Rectangle usedRec = new Rectangle((int) Position.X, (int) Position.Y, 0, 0);
+            //spriteBatch.Draw(gameScreen.ScreenManager.BlankTexture, usedRec, Color.Black);
 
         }
 

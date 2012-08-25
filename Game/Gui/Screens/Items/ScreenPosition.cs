@@ -2,6 +2,6 @@
 {
     public enum ScreenPosition
     {
-        Top, Left, Right, Bottom
+        Top, Left, Right, Bottom, TopRight, TopLeft
     }
 }
