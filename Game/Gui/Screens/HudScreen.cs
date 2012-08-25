@@ -5,6 +5,7 @@ using DynaStudios.UI.Components;
 using DynaStudios.UI.Input;
 using DynaStudios.UI.Screens;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace DynaStudios.LD24.Game.Gui.Screens
 {
@@ -13,6 +14,8 @@ namespace DynaStudios.LD24.Game.Gui.Screens
         public List<IGuiItem> PanelEntries { get; set; }
         public Vector2 PresentationOffset { get; set; }
         public Vector2 Size { get; set; }
+
+        private Texture2D _background;
 
         public ScreenPosition ScreenPosition { get; set; }
 
@@ -28,6 +31,7 @@ namespace DynaStudios.LD24.Game.Gui.Screens
 
         public override void Activate(bool instancePreserved)
         {
+            _background = ScreenManager.Game.Content.Load<Texture2D>("Images/UI/HUD/Border");
             var viewport = ScreenManager.GraphicsDevice.Viewport;
 
             switch (ScreenPosition)
@@ -75,14 +79,14 @@ namespace DynaStudios.LD24.Game.Gui.Screens
             var spriteBatch = ScreenManager.SpriteBatch;
             spriteBatch.Begin();
 
-            //Rectangle testRec = new Rectangle((int) PresentationOffset.X, (int) PresentationOffset.Y, (int) Size.X, (int) Size.Y);
-            //spriteBatch.Draw(ScreenManager.BlankTexture, testRec, Color.Black);
+            Rectangle background = new Rectangle((int)PresentationOffset.X - 27 / 2, (int)PresentationOffset.Y - 20, 627, 170);
+            spriteBatch.Draw(_background, background, Color.White);
 
             foreach (var panelEntry in PanelEntries)
             {
                 panelEntry.Draw(this, gameTime);
             }
-
+            
             spriteBatch.End();
         }
 
