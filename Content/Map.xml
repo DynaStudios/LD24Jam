@@ -3,6 +3,6 @@
   <entity type="static">
     <position x="0" y="0" z="0" />
     <rotation x="0" y="0" z="0" />
-    <model path="Model/Static/Kitche" scale="1.0" />
+    <model path="Models/Static/Kueche" scale="1.0" />
   </entity>
 </map>

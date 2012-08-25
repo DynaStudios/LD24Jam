@@ -32,6 +32,7 @@ namespace DynaStudios.LD24.Scenes
         public override void Activate(bool instancePreserved)
         {
             base.Activate(instancePreserved);
+            Map.LoadResources(ScreenManager.Game.Content);
         }
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)

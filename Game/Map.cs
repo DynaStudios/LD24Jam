@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Xml;
 
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 
 using DynaStudios.LD24.Game.Entities;
 using DynaStudios.LD24.Game.NonEntities;
@@ -18,6 +19,19 @@ namespace DynaStudios.LD24.Game
         {
             Entities = new List<Entity>();
             ActiveEntities = new List<ActiveEntity>();
+        }
+
+        public void LoadResources(ContentManager ContentManager)
+        {
+            foreach (Entity entity in Entities)
+            {
+                entity.LoadResources(ContentManager);
+            }
+
+            foreach (ActiveEntity entity in ActiveEntities)
+            {
+                entity.LoadResources(ContentManager);
+            }
         }
 
         public void SmartAdd(Entity entity)
