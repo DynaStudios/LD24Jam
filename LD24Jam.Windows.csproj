@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Game\Gui\Components\Bar.cs" />
     <Compile Include="Game\Gui\Components\SpellButton.cs" />
     <Compile Include="Game\Gui\Screens\HudScreen.cs" />
     <Compile Include="Game\Gui\SpellBar.cs" />

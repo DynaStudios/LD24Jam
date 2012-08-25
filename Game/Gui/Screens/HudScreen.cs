@@ -8,11 +8,13 @@ namespace DynaStudios.LD24.Game.Gui.Screens
 {
     public class HudScreen : GameScreen
     {
-        public List<IGuiItem> PanelEntries { get; set; } 
+        public List<IGuiItem> PanelEntries { get; set; }
+        public Vector2 PresentationOffset { get; set; }
 
         public HudScreen()
         {
             PanelEntries = new List<IGuiItem>();
+            PresentationOffset = new Vector2(0,0);
         }
 
         public override void Activate(bool instancePreserved)
@@ -22,6 +24,7 @@ namespace DynaStudios.LD24.Game.Gui.Screens
 
         public override void Draw(GameTime gameTime)
         {
+            CalculateItemPositions();
 
             var spriteBatch = ScreenManager.SpriteBatch;
             spriteBatch.Begin();
@@ -32,6 +35,13 @@ namespace DynaStudios.LD24.Game.Gui.Screens
             }
 
             spriteBatch.End();
+        }
+
+        private void CalculateItemPositions()
+        {
+            var position = PresentationOffset;
+            
+
         }
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
