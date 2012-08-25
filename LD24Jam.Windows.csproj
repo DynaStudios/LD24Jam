@@ -64,9 +64,10 @@
     <Compile Include="Game\Entities\Enemy.cs" />
     <Compile Include="Game\Entities\Fighter.cs" />
     <Compile Include="Game\Entities\Player.cs" />
+    <Compile Include="Game\Entities\StaticEntity.cs" />
     <Compile Include="Game\Entities\Stats.cs" />
     <Compile Include="Game\Equipment\DefaultEquipment.cs" />
-    <Compile Include="Game\Equipment\Weapen.cs" />
+    <Compile Include="Game\Equipment\Weapon.cs" />
     <Compile Include="Game\Gui\Components\SpellButton.cs" />
     <Compile Include="Game\Gui\Screens\HudScreen.cs" />
     <Compile Include="Game\Gui\Screens\Items\ScreenPosition.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Game\Entities\ActiveEntity.cs" />
     <Compile Include="Game\Entities\Entity.cs" />
     <Compile Include="Game\Equipment\IEquipment.cs" />
+    <Compile Include="Game\Map.cs" />
     <Compile Include="Game\NonEntities\Camera.cs" />
     <Compile Include="Game\Entities\Position.cs" />
     <Compile Include="LDGame.cs" />
