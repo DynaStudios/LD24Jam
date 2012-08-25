@@ -23,7 +23,7 @@ namespace DynaStudios.LD24.Scenes
             ZIndex = -1;
 
             //Create HudScreen
-            PlayerHUD playerHud = new PlayerHUD(Player) {ScreenPosition = ScreenPosition.Bottom, Size = new Vector2(500, 150)};
+            PlayerHUD playerHud = new PlayerHUD(Player) {ScreenPosition = ScreenPosition.Bottom, Size = new Vector2(600, 150)};
             ScreenManager.AddScreen(playerHud);
 
             base.Activate(instancePreserved);
