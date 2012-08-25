@@ -1,4 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
 using DynaStudios.LD24.Game;
 using DynaStudios.LD24.Game.NonEntities;
@@ -7,9 +9,13 @@ namespace DynaStudios.LD24.Game.Entities {
 
     public abstract class Entity
     {
+        public Model Model { get; set; }
+        public float ModelScaling { get; set; }
+        public string ModelName { get; set; }
+        public Vector3 Size { get; set; }
+
         public Position Position { get; set; }
         public Vector3 Direction { get; set; }
-        public Vector3 Size { get; set; }
 
         public Entity ()
         {
@@ -35,6 +41,11 @@ namespace DynaStudios.LD24.Game.Entities {
             return Collide1D(StartMe.X, EndMe.X, StartEntity.X, EndEntity.X)
                 && Collide1D(StartMe.Y, EndMe.Y, StartEntity.Y, EndEntity.Y)
                 && Collide1D(StartMe.Z, EndMe.Z, StartEntity.Z, EndEntity.Z);
+        }
+
+        public virtual void LoadResources(ContentManager contentManager)
+        {
+            Model = contentManager.Load<Model>(ModelName);
         }
     }
 }

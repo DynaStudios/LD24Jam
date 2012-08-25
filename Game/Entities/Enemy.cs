@@ -7,8 +7,6 @@ namespace DynaStudios.LD24.Game.Entities
 {
     public class Enemy : Fighter
     {
-        public Model Model { get; set; }
-        public float ModelScaling { get; set; }
 
         public override void Draw(Camera camera, GameTime gameTime)
         {

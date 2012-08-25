@@ -15,11 +15,26 @@ namespace DynaStudios.LD24.Game.Entities
         public Stats BaseStats { get; protected set; }
         public Stats Stats { get; protected set; }
         public ReadOnlyCollection<IEquipment> Equipment { get; private set; }
+        public ReadOnlyCollection<Weapon> Weapons { get; private set; }
         
         protected List<Weapon> weapons { get; set; }
-        protected ReadOnlyCollection<Weapon> Weapons { get; set; }
         protected List<IEquipment> equipment = new List<IEquipment>();
 
+        public Fighter()
+        {
+            BaseStats = new Stats
+            {
+                Strenght = 10,
+                Defence = 10,
+                MaxHealth = 100,
+                Health = 100,
+                Exp = 0
+            };
+            equipment = new List<IEquipment>();
+            weapons = new List<Weapon>();
+
+            UpdateEquipment();
+        }
 
         public void HitTarget(Weapon weapon, Fighter target)
         {
