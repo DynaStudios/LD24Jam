@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -6,6 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 using DynaStudios.LD24.Scenes;
 using DynaStudios.LD24.Game.NonEntities;
+using DynaStudios.LD24.Game.Equipment;
 
 namespace DynaStudios.LD24.Game.Entities
 {
@@ -14,17 +17,46 @@ namespace DynaStudios.LD24.Game.Entities
         public Model Model { get; set; }
         public float ModelScaling { get; set; }
 
-        public int Health { get; set; }
-        public int MaxHealth { get; set; }
-        public int Exp { get; set; }
-        public int Strenght { get; set; }
-        public int Defence { get; set; }
+        public Stats BaseStats { get; private set; }
+        public Stats Stats { get; private set; }
+        private List<IEquipment> equipment = new List<IEquipment>();
+        public ReadOnlyCollection<IEquipment> Equipment { get { return new ReadOnlyCollection<IEquipment>(equipment); } }
 
         private GameScreen screen;
 
         public Player(GameScreen screen)
         {
             this.screen = screen;
+            BaseStats = new Stats
+            {
+                Strenght = 10,
+                Defence = 10,
+                MaxHealth = 100,
+                Health = 100,
+                Exp = 0
+            };
+            UpdateEquipment();
+        }
+
+        public void AddEqipment(IEquipment item)
+        {
+            equipment.Add(item);
+            UpdateEquipment();
+        }
+
+        public void RemoveEqipment(IEquipment item)
+        {
+            equipment.Remove(item);
+            UpdateEquipment();
+        }
+
+        private void UpdateEquipment()
+        {
+            Stats = BaseStats;
+            foreach (IEquipment item in equipment)
+            {
+                Stats = item.getModfied(Stats);
+            }
         }
 
         public override void Update(GameTime gameTime)
