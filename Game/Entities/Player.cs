@@ -20,7 +20,9 @@ namespace DynaStudios.LD24.Game.Entities
         public Stats BaseStats { get; private set; }
         public Stats Stats { get; private set; }
         private List<IEquipment> equipment = new List<IEquipment>();
-        public ReadOnlyCollection<IEquipment> Equipment { get { return new ReadOnlyCollection<IEquipment>(equipment); } }
+        public ReadOnlyCollection<IEquipment> Equipment {
+            get { return new ReadOnlyCollection<IEquipment>(equipment); }
+        }
 
         private GameScreen screen;
 

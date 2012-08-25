@@ -8,9 +8,9 @@ namespace DynaStudios.LD24.Game.Equipment
 
         // multiplicated values
         public int Strenght { get; set; }
-        public int Defence { get; set; }
 
         // added values
+        public int Defence { get; set; }
         public int MaxHealth { get; set; }
 
         public DefaultEquipment()
@@ -27,7 +27,7 @@ namespace DynaStudios.LD24.Game.Equipment
             return new Stats
             {
                 Strenght = stats.Strenght * Strenght,
-                Defence = stats.Defence * Defence,
+                Defence = stats.Defence + Defence,
                 MaxHealth = MaxHealth + stats.MaxHealth
             };
         }
