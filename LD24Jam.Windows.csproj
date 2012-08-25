@@ -66,6 +66,8 @@
     <Compile Include="Game\Gui\SpellBar.cs" />
     <Compile Include="Game\Entities\ActiveEntity.cs" />
     <Compile Include="Game\Entities\Entity.cs" />
+    <Compile Include="Game\NonEntities\Camera.cs" />
+    <Compile Include="Game\Entities\Position.cs" />
     <Compile Include="LDGame.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

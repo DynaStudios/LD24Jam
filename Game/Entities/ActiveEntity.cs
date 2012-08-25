@@ -1,9 +1,14 @@
 ﻿using System;
 
+using Microsoft.Xna.Framework;
+
 namespace DynaStudios.LD24.Game.Entities
 {
     public abstract class ActiveEntity : Entity
     {
-        public abstract void Update(TimeSpan runTime);
+        public virtual void Update(GameTime gameTime)
+        {
+            Position.UpdateVisual(gameTime.TotalGameTime);
+        }
     }
 }
