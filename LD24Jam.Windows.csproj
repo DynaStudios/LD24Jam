@@ -63,6 +63,8 @@
     <Compile Include="Game\Gui\Components\SpellButton.cs" />
     <Compile Include="Game\Gui\Screens\HudScreen.cs" />
     <Compile Include="Game\Gui\SpellBar.cs" />
+    <Compile Include="Game\Entities\ActiveEntity.cs" />
+    <Compile Include="Game\Entities\Entity.cs" />
     <Compile Include="LDGame.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
