@@ -19,12 +19,11 @@ namespace DynaStudios.LD24.Scenes
         public Map Map;
         public Camera Camera { get; set; }
 
-        public InputState input;
         public Player Player;
 
         public GameScreen()
         {
-
+            
         }
 
         public override void Activate(bool instancePreserved)
@@ -49,7 +48,6 @@ namespace DynaStudios.LD24.Scenes
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
             base.Update(gameTime, otherScreenHasFocus, false);
-            Map.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)
@@ -61,6 +59,7 @@ namespace DynaStudios.LD24.Scenes
         public override void HandleInput(GameTime gameTime, InputState input)
         {
             base.HandleInput(gameTime, input);
+            Map.Update(gameTime, input);
         }
     }
 }

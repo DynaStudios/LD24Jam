@@ -5,6 +5,8 @@ using System.Xml;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 
+using DynaStudios.UI.Input;
+
 using DynaStudios.LD24.Game.Entities;
 using DynaStudios.LD24.Game.NonEntities;
 
@@ -58,11 +60,11 @@ namespace DynaStudios.LD24.Game
             while(Entities.Remove(entity));
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, InputState input)
         {
             foreach (ActiveEntity entity in ActiveEntities)
             {
-                entity.Update(gameTime);
+                entity.Update(gameTime, input);
             }
         }
 
