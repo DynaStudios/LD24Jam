@@ -31,7 +31,6 @@ namespace DynaStudios.LD24.Scenes
             ScreenManager.AddScreen(playerHud);
 
             base.Activate(instancePreserved);
-            Player.Model = this.ScreenManager.Game.Content.Load<Model>("Models/goblin_fbx");
         }
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
