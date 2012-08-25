@@ -62,12 +62,17 @@
   <ItemGroup>
     <Compile Include="Game\Gui\Components\Bar.cs" />
     <Compile Include="Game\Entities\Player.cs" />
+    <Compile Include="Game\Entities\Stats.cs" />
+    <Compile Include="Game\Equipment\DefaultEquipment.cs" />
     <Compile Include="Game\Gui\Components\SpellButton.cs" />
     <Compile Include="Game\Gui\Screens\HudScreen.cs" />
     <Compile Include="Game\Gui\Screens\Items\ScreenPosition.cs" />
     <Compile Include="Game\Gui\SpellBar.cs" />
     <Compile Include="Game\Entities\ActiveEntity.cs" />
     <Compile Include="Game\Entities\Entity.cs" />
+    <Compile Include="Game\Equipment\IEquipment.cs" />
+    <Compile Include="Game\NonEntities\Camera.cs" />
+    <Compile Include="Game\Entities\Position.cs" />
     <Compile Include="LDGame.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,6 +106,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Content\Images\UI\HUD\HealthBar.xnb">
+    <None Include="Content\Models\goblin_fbx.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Properties\Settings.settings">
