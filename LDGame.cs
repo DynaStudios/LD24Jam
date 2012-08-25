@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 
 namespace DynaStudios.LD24
 {
-    public class LDGame : Game
+    public class LDGame : Microsoft.Xna.Framework.Game
     {
         public GraphicsDeviceManager GraphicsDeviceManager { get; set; }
 
