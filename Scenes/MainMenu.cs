@@ -27,7 +27,7 @@ namespace DynaStudios.LD24.Scenes
 
         private void StartGameButtonClicked(object sender, EventArgs e)
         {
-            Console.WriteLine("Start Game Button Clicked");
+            LoadingScreen.Load(ScreenManager, true, "Starting Game...", new GameScreen());
         }
 
 
