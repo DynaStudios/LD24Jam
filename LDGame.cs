@@ -39,6 +39,9 @@ namespace DynaStudios.LD24
 
         protected override void Initialize()
         {
+            GraphicsDeviceManager.PreferredBackBufferWidth = 1024;
+            GraphicsDeviceManager.PreferredBackBufferHeight = 768;
+
             base.Initialize();
         }
 

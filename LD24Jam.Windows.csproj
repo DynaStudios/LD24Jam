@@ -64,6 +64,7 @@
     <Compile Include="Game\Entities\Player.cs" />
     <Compile Include="Game\Gui\Components\SpellButton.cs" />
     <Compile Include="Game\Gui\Screens\HudScreen.cs" />
+    <Compile Include="Game\Gui\Screens\Items\ScreenPosition.cs" />
     <Compile Include="Game\Gui\SpellBar.cs" />
     <Compile Include="Game\Entities\ActiveEntity.cs" />
     <Compile Include="Game\Entities\Entity.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scenes\GameScreen.cs" />
+    <Compile Include="Scenes\HUD\PlayerHUD.cs" />
     <Compile Include="Scenes\MainMenu.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
