@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -13,13 +14,15 @@ namespace DynaStudios.LD24.Scenes
 {
     public class GameScreen : UI.Screens.GameScreen
     {
-        public Map Map = new Map();
+        public Map Map;
         public Camera Camera { get; set; }
 
         public InputState input;
 
         public GameScreen()
         {
+            Map = new Map();
+            Map.Load(Path.Combine("Content", "Map.xml"));
             Player player = new Player(this);
 
             Camera = new Camera(player);
