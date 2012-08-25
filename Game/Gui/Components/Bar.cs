@@ -52,8 +52,11 @@ namespace DynaStudios.LD24.Game.Gui.Components
             spriteBatch.Draw(Background, backgroundRec, Color.White);
 
             //Overlap not active part
-            //Rectangle usedRec = new Rectangle((int) Position.X, (int) Position.Y, 0, 0);
-            //spriteBatch.Draw(gameScreen.ScreenManager.BlankTexture, usedRec, Color.Black);
+            var newValue = 100 - Value;
+            
+            int overlapHeight = (int) (Size.Y/100*newValue);
+            Rectangle usedRec = new Rectangle((int) Position.X, (int) Position.Y, (int) Size.X, overlapHeight);
+            spriteBatch.Draw(gameScreen.ScreenManager.BlankTexture, usedRec, Color.Black);
 
         }
 
