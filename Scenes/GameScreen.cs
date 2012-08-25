@@ -1,7 +1,9 @@
+using DynaStudios.LD24.Game.Gui.Screens.Items;
+using DynaStudios.LD24.Scenes.HUD;
+﻿using Microsoft.Xna.Framework;
 ﻿using System.Collections.Generic;
 using System.IO;
 
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using DynaStudios.UI.Input;
@@ -18,26 +20,35 @@ namespace DynaStudios.LD24.Scenes
         public Camera Camera { get; set; }
 
         public InputState input;
+        public Player Player;
 
         public GameScreen()
         {
-            Map = new Map();
-            Map.Load(Path.Combine("Content", "Map.xml"));
-            Player player = new Player(this);
 
-            Camera = new Camera(player);
-            Map.SmartAdd(player);
         }
 
         public override void Activate(bool instancePreserved)
         {
+            ZIndex = -1;
+
+            Map = new Map();
+            Map.Load(Path.Combine("Content", "Map.xml"));
+
+            Player = new Player(this);
+            Camera = new Camera(Player);
+            Map.SmartAdd(Player);
+
+            //Create HudScreen
+            PlayerHUD playerHud = new PlayerHUD(Player) {ScreenPosition = ScreenPosition.Bottom, Size = new Vector2(600, 150)};
+            ScreenManager.AddScreen(playerHud);
+
             base.Activate(instancePreserved);
             Map.LoadResources(ScreenManager.Game.Content);
         }
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
-            base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
+            base.Update(gameTime, otherScreenHasFocus, false);
             Map.Update(gameTime);
         }
 

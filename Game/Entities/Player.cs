@@ -28,7 +28,31 @@ namespace DynaStudios.LD24.Game.Entities
                 Health = 100,
                 Exp = 0
             };
+
+            //Test here
+            AddSampleSpells();
+
             UpdateEquipment();
+        }
+
+        private void AddSampleSpells()
+        {
+            Weapon testSpell1 = new Weapon();
+            Weapon testSpell2 = new Weapon();
+
+            var spellIconTest = screen.ScreenManager.Game.Content.Load<Texture2D>("Images/Spells/Fireball");
+
+            testSpell1.Priority = 1;
+            testSpell2.Priority = 1;
+
+            testSpell1.Icon = spellIconTest;
+            testSpell2.Icon = spellIconTest;
+
+            testSpell1.Power = 20;
+            testSpell2.Power = 20;
+            
+            AddEqipment(testSpell1);
+            AddEqipment(testSpell2);
         }
 
         public override void Update(GameTime gameTime)

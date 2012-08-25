@@ -1,10 +1,12 @@
 ﻿using DynaStudios.LD24.Game.Entities;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace DynaStudios.LD24.Game.Equipment
 {
     public class DefaultEquipment : IEquipment
     {
         public int Priority { get; set; }
+        public Texture2D Icon { get; set; }
 
         public int Strenght { get; set; }
         public int Defence { get; set; }

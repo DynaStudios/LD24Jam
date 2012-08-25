@@ -67,8 +67,15 @@
     <Compile Include="Game\Entities\Stats.cs" />
     <Compile Include="Game\Equipment\DefaultEquipment.cs" />
     <Compile Include="Game\Equipment\Weapon.cs" />
+    <Compile Include="Game\Gui\Components\BigPanel.cs" />
+    <Compile Include="Game\Gui\Components\CharacterStatsInfo.cs" />
+    <Compile Include="Game\Gui\Components\ExperienceBar.cs" />
+    <Compile Include="Game\Gui\Components\HealthBarInfo.cs" />
+    <Compile Include="Game\Gui\Components\MediumPanel.cs" />
+    <Compile Include="Game\Gui\Components\SmallPanel.cs" />
     <Compile Include="Game\Gui\Components\SpellButton.cs" />
     <Compile Include="Game\Gui\Screens\HudScreen.cs" />
+    <Compile Include="Game\Gui\Screens\Items\ScreenPosition.cs" />
     <Compile Include="Game\Gui\SpellBar.cs" />
     <Compile Include="Game\Entities\ActiveEntity.cs" />
     <Compile Include="Game\Entities\Entity.cs" />
@@ -80,6 +87,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scenes\GameScreen.cs" />
+    <Compile Include="Scenes\HUD\PlayerHUD.cs" />
     <Compile Include="Scenes\MainMenu.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -101,7 +109,31 @@
     <None Include="Content\Fonts\menu_small.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Content\Images\Spells\Fireball.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Content\Images\UI\BlankTexture.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Images\UI\HUD\bars_colored.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Images\UI\HUD\bars_grayed.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Images\UI\HUD\DNA.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Images\UI\HUD\GrayDNA.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Images\UI\largePanel.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Images\UI\middleContainer.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Images\UI\smallPanel.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Content\Models\goblin_fbx.xnb">
