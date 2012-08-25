@@ -15,8 +15,6 @@ namespace DynaStudios.LD24.Game.Gui.Screens
         public Vector2 PresentationOffset { get; set; }
         public Vector2 Size { get; set; }
 
-        private Texture2D _background;
-
         public ScreenPosition ScreenPosition { get; set; }
 
         public HudScreen()
@@ -31,7 +29,6 @@ namespace DynaStudios.LD24.Game.Gui.Screens
 
         public override void Activate(bool instancePreserved)
         {
-            _background = ScreenManager.Game.Content.Load<Texture2D>("Images/UI/HUD/Border");
             var viewport = ScreenManager.GraphicsDevice.Viewport;
 
             switch (ScreenPosition)
@@ -74,13 +71,8 @@ namespace DynaStudios.LD24.Game.Gui.Screens
 
         public override void Draw(GameTime gameTime)
         {
-            CalculateItemPositions();
-
             var spriteBatch = ScreenManager.SpriteBatch;
             spriteBatch.Begin();
-
-            Rectangle background = new Rectangle((int)PresentationOffset.X - 27 / 2, (int)PresentationOffset.Y - 20, 627, 170);
-            spriteBatch.Draw(_background, background, Color.White);
 
             foreach (var panelEntry in PanelEntries)
             {
@@ -88,35 +80,6 @@ namespace DynaStudios.LD24.Game.Gui.Screens
             }
             
             spriteBatch.End();
-        }
-
-        private void CalculateItemPositions()
-        {
-            var position = PresentationOffset;
-
-            foreach (IGuiItem entry in PanelEntries)
-            {
-                if (entry.GetType() == typeof(Bar))
-                {
-                    var panelEntry = entry as Bar;
-                    switch (panelEntry.HudPosition)
-                    {
-                        case ScreenPosition.Left:
-                            panelEntry.Position = position;
-                            break;
-                        case ScreenPosition.Right:
-                            position.X = PresentationOffset.X + Size.X - panelEntry.GetWidth(this);
-                            position.Y = PresentationOffset.Y;
-                            panelEntry.Position = position;
-                            break;
-                    }   
-                }
-                if (entry.GetType() == typeof(SpellBar))
-                {
-                    //Draw Spellbar here
-                }
-            }
-
         }
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)

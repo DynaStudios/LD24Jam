@@ -19,18 +19,20 @@ namespace DynaStudios.LD24.Scenes
         public Camera Camera { get; set; }
 
         public InputState input;
+        public Player Player;
 
         public GameScreen()
         {
-            Player player = new Player(this);
-
-            Camera = new Camera(player);
-            Map.SmartAdd(player);
         }
 
         public override void Activate(bool instancePreserved)
         {
             ZIndex = -1;
+
+            Player = new Player(this);
+            Camera = new Camera(Player);
+
+            Map.SmartAdd(Player);
 
             //Create HudScreen
             PlayerHUD playerHud = new PlayerHUD(Player) {ScreenPosition = ScreenPosition.Bottom, Size = new Vector2(600, 150)};

@@ -1,4 +1,8 @@
-﻿using DynaStudios.UI.Components;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using DynaStudios.LD24.Game.Equipment;
+using DynaStudios.LD24.Game.Gui.Components;
+using DynaStudios.UI.Components;
 using DynaStudios.UI.Input;
 using DynaStudios.UI.Screens;
 using Microsoft.Xna.Framework;
@@ -6,35 +10,17 @@ using Microsoft.Xna.Framework.Audio;
 
 namespace DynaStudios.LD24.Game.Gui
 {
-    public class SpellBar : IGuiItem
+    public class SpellBar : BigPanel
     {
-        public Vector2 Position { get; set; }
-        public Vector2 Size { get; set; }
-        public int ZIndex { get; set; }
-        public SoundEffect HoverSound { get; set; }
-        public SoundEffect ClickSound { get; set; }
+        public ReadOnlyCollection<IEquipment> Spells { get; set; }
+        public int SelectedIndex { get; set; }
 
-        public float GetWidth(GameScreen gameScreen)
+        public override void Draw(GameScreen gameScreen, GameTime gameTime)
         {
-            return Size.X;
-        }
+            base.Draw(gameScreen, gameTime);
 
-        public float GetHeight(GameScreen gameScreen)
-        {
-            return Size.Y;
-        }
+            var spriteBatch = gameScreen.ScreenManager.SpriteBatch;
 
-        public void Update(GameScreen gameScreen, GameTime gameTime)
-        {
         }
-
-        public void Draw(GameScreen gameScreen, GameTime gameTime)
-        {
-        }
-
-        public void HandleInput(InputState input)
-        {
-        }
-
     }
 }

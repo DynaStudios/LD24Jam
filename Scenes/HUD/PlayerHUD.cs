@@ -12,39 +12,44 @@ namespace DynaStudios.LD24.Scenes.HUD
     {
         private Player _player;
 
-        private Bar _healthBar, _dnaProgressBar;
+        private HealthBarInfo _healthBar;
+        private ExperienceBar _dnaBar;
         private SpellBar _spellBar;
+        private CharacterStatsInfo _characterStatsBase;
 
         public PlayerHUD(Player player)
         {
             _player = player;
+            _player.BaseStats.MaxHealth = 100;
         }
 
         public override void Activate(bool instancePreserved)
         {
-            //Load HealthBar
-            Texture2D healthBackground = ScreenManager.Game.Content.Load<Texture2D>("Images/UI/HUD/HealthBar");
-            Texture2D dnaProgressBackground = ScreenManager.Game.Content.Load<Texture2D>("Images/UI/HUD/DNABar");
-
             //Add HealthBar and ProgressBar
-            _healthBar = new Bar(healthBackground, _player.BaseStats.Health) { Size = new Vector2(100, 150), HudPosition = ScreenPosition.Left };
-            _dnaProgressBar = new Bar(dnaProgressBackground, _player.BaseStats.Exp) { Size = new Vector2(100, 150), HudPosition = ScreenPosition.Right };
+            _healthBar = new HealthBarInfo {Position = new Vector2(20, 540)};
+            _dnaBar = new ExperienceBar {Position = new Vector2(20, 650)};
 
-            _spellBar = new SpellBar();
+            _spellBar = new SpellBar {Position = new Vector2(245, 655)};
+
+            _characterStatsBase = new CharacterStatsInfo {Position = new Vector2(800, 550)};
 
             //Add Items to Panel
             PanelEntries.Add(_healthBar);
-            //TODO: Add Spellbar here
-            PanelEntries.Add(_dnaProgressBar);
+            PanelEntries.Add(_dnaBar);
+            PanelEntries.Add(_spellBar);
+            PanelEntries.Add(_characterStatsBase);
 
             base.Activate(instancePreserved);
         }
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
-            _healthBar.Value = _player.BaseStats.Health;
-            //_healthBar.Value = 50;
-            _dnaProgressBar.Value = _player.BaseStats.Exp;
+            _healthBar.Health = _player.BaseStats.Health;
+            //todo: remove when Max Health implemented
+            _player.BaseStats.MaxHealth = _player.BaseStats.MaxHealth;
+            _healthBar.MaxHealth = _player.BaseStats.MaxHealth;
+            //_healthBar.Power = _player.BaseStats.Power;
+            _spellBar.Spells = _player.Equipment;
 
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
         }
