@@ -13,8 +13,14 @@ namespace DynaStudios.LD24.Scenes
             var viewport = ScreenManager.GraphicsDevice.Viewport;
             PresentationOffset = new Vector2(viewport.Width / 2, viewport.Height / 2);
 
-            Button startGameButton = new Button("Start Game") { FillColor = Color.Blue, HoverColor = Color.Orange };
-            Button aboutButton = new Button("About") { FillColor = Color.Blue, HoverColor = Color.Orange };
+            Button startGameButton = new Button("Start Game") {
+                FillColor = Color.Blue,
+                HoverColor = Color.Orange
+            };
+            Button aboutButton = new Button("About") {
+                FillColor = Color.Blue,
+                HoverColor = Color.Orange
+            };
 
             startGameButton.Clicked += StartGameButtonClicked;
             aboutButton.Clicked += AboutButtonClicked;
