@@ -106,5 +106,9 @@ namespace DynaStudios.LD24.Game.Entities
         public override void Draw(Camera camera, GameTime gameTime)
         {
         }
+
+        public override void LoadResources(Microsoft.Xna.Framework.Content.ContentManager contentManager)
+        {
+        }
     }
 }

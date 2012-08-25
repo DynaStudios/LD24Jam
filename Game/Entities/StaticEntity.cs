@@ -1,13 +1,12 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 using DynaStudios.LD24.Game.NonEntities;
 
 namespace DynaStudios.LD24.Game.Entities
 {
-    public class Enemy : Fighter
+    public class StaticEntity : Entity
     {
-
         public override void Draw(Camera camera, GameTime gameTime)
         {
             Matrix[] modelTransforms = new Matrix[Model.Bones.Count];

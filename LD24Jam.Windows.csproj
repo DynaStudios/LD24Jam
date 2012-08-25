@@ -63,6 +63,7 @@
     <Compile Include="Game\Entities\Enemy.cs" />
     <Compile Include="Game\Entities\Fighter.cs" />
     <Compile Include="Game\Entities\Player.cs" />
+    <Compile Include="Game\Entities\StaticEntity.cs" />
     <Compile Include="Game\Entities\Stats.cs" />
     <Compile Include="Game\Equipment\DefaultEquipment.cs" />
     <Compile Include="Game\Equipment\Weapon.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Game\Entities\ActiveEntity.cs" />
     <Compile Include="Game\Entities\Entity.cs" />
     <Compile Include="Game\Equipment\IEquipment.cs" />
+    <Compile Include="Game\Map.cs" />
     <Compile Include="Game\NonEntities\Camera.cs" />
     <Compile Include="Game\Entities\Position.cs" />
     <Compile Include="LDGame.cs" />
@@ -105,6 +107,9 @@
     <None Include="Content\Models\goblin_fbx.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Content\Models\Static\Kueche.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -116,6 +121,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Map.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\README.txt" />
   </ItemGroup>
   <ItemGroup>
