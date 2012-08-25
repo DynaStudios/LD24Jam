@@ -1,4 +1,6 @@
 ﻿using System;
+using DynaStudios.LD24.Scenes;
+using DynaStudios.UI;
 using Microsoft.Xna.Framework;
 
 namespace DynaStudios.LD24
@@ -6,6 +8,9 @@ namespace DynaStudios.LD24
     public class LDGame : Game
     {
         public GraphicsDeviceManager GraphicsDeviceManager { get; set; }
+
+        private readonly ScreenFactory _screenFactory;
+        private readonly ScreenManager _screenManager;
 
         public LDGame()
         {
@@ -16,6 +21,20 @@ namespace DynaStudios.LD24
 
             //Enable VSync to save computer performance
             IsFixedTimeStep = true;
+
+            //GUI and Game Screen Managment Init
+            _screenFactory = new ScreenFactory();
+            Services.AddService(typeof(IScreenFactory), _screenFactory);
+
+            _screenManager = new ScreenManager(this);
+            Components.Add(_screenManager);
+            AddInitialScreens();
+
+        }
+
+        private void AddInitialScreens()
+        {
+            _screenManager.AddScreen(new MainMenu());    
         }
 
         protected override void Initialize()
