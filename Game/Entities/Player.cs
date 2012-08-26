@@ -6,6 +6,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
+using DynaStudios.UI.Input;
+
 using DynaStudios.LD24.Scenes;
 using DynaStudios.LD24.Game.NonEntities;
 using DynaStudios.LD24.Game.Equipment;
@@ -55,16 +57,16 @@ namespace DynaStudios.LD24.Game.Entities
             AddEqipment(testSpell2);
         }
 
-        public override void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime, InputState inputState)
         {
-            base.Update(gameTime);
+            base.Update(gameTime, inputState);
 
-            if (screen == null || screen.input == null || screen.input.KeyboardState == null)
+            if (inputState == null || inputState.KeyboardState == null)
             {
                 return;
             }
 
-            UpdateInput(gameTime);
+            UpdateInput(gameTime, inputState);
         }
 
 		// for better overview define...
@@ -72,9 +74,9 @@ namespace DynaStudios.LD24.Game.Entities
 		private float cos (double ang) { return (float) Math.Cos (ang/180.0*Math.PI); }
 		private float sqrt2 = (float) Math.Sqrt(2.0) * 0.5f;
 
-        private void UpdateInput (GameTime gameTime)
+        private void UpdateInput(GameTime gameTime, InputState inputState)
 		{
-			var keyboardState = screen.input.KeyboardState;
+			var keyboardState = inputState.KeyboardState;
 			var position = Position.Real;
 			var direction = Direction;
 			float distance= moving_speed_s / 60.0f; // the distance this object can move during this update

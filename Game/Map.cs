@@ -5,11 +5,15 @@ using System.Xml;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 
+using DynaStudios.UI.Input;
+
 using DynaStudios.LD24.Game.Entities;
 using DynaStudios.LD24.Game.NonEntities;
 
 namespace DynaStudios.LD24.Game
 {
+    public delegate void EntityPassingDelegate(Entity entity);
+    public delegate void ActiveEntityPassingDelegate(ActiveEntity entity);
     public class Map
     {
         public List<Entity> Entities { get; set; }
@@ -21,16 +25,31 @@ namespace DynaStudios.LD24.Game
             ActiveEntities = new List<ActiveEntity>();
         }
 
-        public void LoadResources(ContentManager ContentManager)
+        public void ForEachEntity(EntityPassingDelegate func)
         {
             foreach (Entity entity in Entities)
             {
-                entity.LoadResources(ContentManager);
+                func(entity);
             }
-
             foreach (ActiveEntity entity in ActiveEntities)
             {
-                entity.LoadResources(ContentManager);
+                func(entity);
+            }
+        }
+
+        public void ForEachActiveEntity(ActiveEntityPassingDelegate func)
+        {
+            foreach (ActiveEntity entity in ActiveEntities)
+            {
+                func(entity);
+            }
+        }
+
+        public void ForEachPassiveEntity(EntityPassingDelegate func)
+        {
+            foreach (Entity entity in Entities)
+            {
+                func(entity);
             }
         }
 
@@ -56,27 +75,6 @@ namespace DynaStudios.LD24.Game
             }
 
             while(Entities.Remove(entity));
-        }
-
-        public void Update(GameTime gameTime)
-        {
-            foreach (ActiveEntity entity in ActiveEntities)
-            {
-                entity.Update(gameTime);
-            }
-        }
-
-        public void Draw(Camera camera, GameTime gameTime)
-        {
-            foreach (Entity entity in Entities)
-            {
-                entity.Draw(camera, gameTime);
-            }
-
-            foreach (Entity entity in ActiveEntities)
-            {
-                entity.Draw(camera, gameTime);
-            }
         }
 
         public void Load(string fileName)
