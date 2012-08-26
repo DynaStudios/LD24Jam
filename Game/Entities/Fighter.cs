@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 using Microsoft.Xna.Framework.Graphics;
@@ -14,6 +15,7 @@ namespace DynaStudios.LD24.Game.Entities
         public event PassingFighterDelegate Died;
         public Stats BaseStats { get; protected set; }
         public Stats Stats { get; protected set; }
+        public bool IsAlive { get { return Stats.Health > 0; } }
         public ReadOnlyCollection<IEquipment> Equipment { get; private set; }
         public ReadOnlyCollection<Weapon> Weapons { get; private set; }
         
@@ -25,7 +27,7 @@ namespace DynaStudios.LD24.Game.Entities
             BaseStats = new Stats
             {
                 Strenght = 10,
-                Defence = 10,
+                Defence = 5,
                 MaxHealth = 100,
                 Health = 100,
                 Exp = 0
@@ -43,7 +45,7 @@ namespace DynaStudios.LD24.Game.Entities
 
         public void TakeDemage(int deamage)
         {
-            Stats.Health -= deamage / Stats.Defence - Stats.Defence;
+            Stats.Health -= Math.Max(deamage / Stats.Defence - Stats.Defence, 0);
             if (Stats.Health <= 0 && Died != null)
             {
                 Died(this);
@@ -76,6 +78,8 @@ namespace DynaStudios.LD24.Game.Entities
 
         protected void UpdateEquipment()
         {
+            const int HealthCalcPrcision = 10000;
+            int healthPart = Stats.Health * HealthCalcPrcision / Stats.MaxHealth;
             Stats = BaseStats;
             foreach (IEquipment item in equipment)
             {
@@ -83,6 +87,7 @@ namespace DynaStudios.LD24.Game.Entities
             }
             Equipment = new ReadOnlyCollection<IEquipment>(equipment);
             Weapons = new ReadOnlyCollection<Weapon>(weapons);
+            Stats.Health = Stats.MaxHealth * healthPart / HealthCalcPrcision;
         }
     }
 }

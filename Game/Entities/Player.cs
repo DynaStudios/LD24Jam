@@ -16,8 +16,8 @@ namespace DynaStudios.LD24.Game.Entities
 {
     public class Player : Fighter
     {
-
         private GameScreen screen;
+        protected TimeSpan lastUpdate;
 
         public Player(GameScreen screen)
         {
@@ -67,6 +67,7 @@ namespace DynaStudios.LD24.Game.Entities
             }
 
             UpdateInput(gameTime, inputState);
+            lastUpdate = gameTime.TotalGameTime;
         }
 
 		// for better overview define...
@@ -76,11 +77,14 @@ namespace DynaStudios.LD24.Game.Entities
 
         private void UpdateInput(GameTime gameTime, InputState inputState)
 		{
-			var keyboardState = inputState.KeyboardState;
-			var position = Position.Real;
-			var direction = Direction;
-			float distance= moving_speed_s / 60.0f; // the distance this object can move during this update
-			float angle   = turning_speed_s / 60.0f; // the angle by which this object can turn during this update
+            double timeDiffLastUpdate = (gameTime.TotalGameTime - lastUpdate).TotalMilliseconds;
+			var keyboardState   = inputState.KeyboardState;
+			var position        = Position.Real;
+			var direction       = Direction;
+            // the distance this object can move during this update
+			float distance      = (float)(SpeedMeterPerSec * timeDiffLastUpdate / 1000.0);
+            // the angle by which this object can turn during this update
+            float angle         = (float)(TurningSpeedSec  * timeDiffLastUpdate / 1000.0);
 
 			if (keyboardState.IsKeyDown (Keys.Up)) {
 				direction.X -= angle;

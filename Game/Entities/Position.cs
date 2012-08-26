@@ -13,6 +13,13 @@ namespace DynaStudios.LD24.Game.Entities
         public float SteepSize { get; set; }
         public Vector3 Visual { get; set; }
 
+        public Position(Position position) : this()
+        {
+            Real = position.Real;
+            SteepSize = position.SteepSize;
+            Visual = position.Visual;
+        }
+
         public Position()
         {
             // every 200ms (2000 x 100ns = 200ms)

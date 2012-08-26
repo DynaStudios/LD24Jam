@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Game\Combat\Projectile.cs" />
     <Compile Include="Game\Entities\Enemy.cs" />
     <Compile Include="Game\Entities\Fighter.cs" />
     <Compile Include="Game\Entities\Player.cs" />
